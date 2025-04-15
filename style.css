@@ -1,0 +1,245 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #4a4e69 0%, #22223b 100%);
+    color: #f4f4f9;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(45deg, #9a4e1e, #f1a7a5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    text-align: center;
+    color: #c0c0c0;
+    margin-bottom: 3rem;
+}
+
+.animations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.animation-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.animation-card:hover {
+    transform: translateY(-5px);
+}
+
+.animation-card h2 {
+    margin: 1rem 0 0.5rem;
+    font-size: 1.5rem;
+    color: #f4f4f9;
+}
+
+.animation-card p {
+    color: #c0c0c0;
+    font-size: 0.9rem;
+}
+
+/* Loader container */
+.loader {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Spinning Circle */
+.spinning-circle {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-top-color: #9a4e1e;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Bouncing Dots */
+.bouncing-dots {
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 15px;
+    height: 15px;
+    background: #4c5697;
+    border-radius: 50%;
+    animation: bounce 0.5s ease-in-out infinite;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.1s;
+    background: #9a4e1e;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.2s;
+    background: #f1a7a5;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Pulsating Ring */
+.pulsating-ring {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #9a4e1e;
+    animation: pulse 1.5s ease-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Gradient Wave */
+.gradient-wave {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.wave {
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, #9a4e1e, #f1a7a5, #4a4e69);
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    animation: wave 3s linear infinite;
+    border-radius: 35%;
+}
+
+@keyframes wave {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Rotating Square */
+.rotating-square {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, #9a4e1e, #4a4e69);
+    animation: rotate3d 2s ease infinite;
+}
+
+@keyframes rotate3d {
+    0% {
+        transform: perspective(200px) rotateX(0deg) rotateY(0deg);
+    }
+    50% {
+        transform: perspective(200px) rotateX(180deg) rotateY(0deg);
+    }
+    100% {
+        transform: perspective(200px) rotateX(180deg) rotateY(180deg);
+    }
+}
+
+/* Ripple Effect */
+.ripple-effect {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ripple-effect::before,
+.ripple-effect::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border: 2px solid #f1a7a5;
+    border-radius: 50%;
+    animation: ripple 1.5s ease-out infinite;
+}
+
+.ripple-effect::after {
+    animation-delay: 0.5s;
+}
+
+@keyframes ripple {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        width: 200%;
+        height: 200%;
+        opacity: 0;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    .animations-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
